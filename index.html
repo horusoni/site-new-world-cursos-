@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="pt-br" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New World Cursos | Educação Profissional e Idiomas</title>
+
+    <meta charset="UTF-8" />
+
+  <!-- 🔥 Título -->
+  <meta property="og:title" content="New World Cursos" />
+
+  <!-- 🔥 Descrição -->
+  <meta property="og:description" content="Cursos profissionais com certificado" />
+
+  <!-- 🔥 Imagem (a capa) -->
+  <meta property="og:image" content="/assets/capa_site.png" />
+
+  <!-- 🔥 URL do site -->
+  <meta property="og:url" content="https://seusite.com" />
+
+  <!-- 🔥 Tipo -->
+  <meta property="og:type" content="website" />
+
+  <!-- 🔥 (opcional, mas MUITO importante pro WhatsApp) -->
+  <meta name="twitter:card" content="summary_large_image" />
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="shortcut icon" href="https://newworld-teste.netlify.app/assets/images/Logo%20Marca%20(1).png"
+        type="image/x-icon">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.2/vanilla-tilt.min.js"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            light: '#ffffff',
+                            bg: '#fbfcfd',
+                            text: '#1a1c3d',
+                            blue: '#0E459B',
+                            red: '#ff003c',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap');
+
+        body {
+            background-color: #ffffff;
+            font-family: 'Poppins', sans-serif;
+            color: #1a1c3d;
+            overflow-x: hidden;
+        }
+
+        .card-course {
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            background: #ffffff;
+            border: 1px solid #eef2f6;
+            border-bottom: 4px solid transparent;
+        }
+
+        .card-course:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 25px 50px -12px rgba(62, 64, 149, 0.15);
+        }
+
+        .card-blue:hover {
+            border-bottom-color: #0E459B;
+        }
+
+        .card-red:hover {
+            border-bottom-color: #ff003c;
+        }
+
+        .btn-glow-blue:hover {
+            box-shadow: 0 12px 24px -6px rgba(62, 64, 149, 0.5);
+            transform: translateY(-2px);
+        }
+
+        .btn-glow-red:hover {
+            box-shadow: 0 12px 24px -6px rgba(255, 0, 60, 0.5);
+            transform: translateY(-2px);
+        }
+
+        /* Stories */
+        .story-container {
+            display: flex;
+            gap: 20px;
+            overflow-x: auto;
+            padding: 20px 0;
+            scroll-snap-type: x mandatory;
+            scrollbar-width: none;
+            cursor: grab;
+            user-select: none;
+            scroll-behavior: smooth;
+        }
+
+        .story-container:active {
+            cursor: grabbing;
+            scroll-behavior: auto;
+        }
+
+        .story-container::-webkit-scrollbar {
+            display: none;
+        }
+
+        .story-video-card {
+            min-width: 280px;
+            aspect-ratio: 9/16;
+            border-radius: 28px;
+            position: relative;
+            padding: 5px;
+            background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+            scroll-snap-align: center;
+            pointer-events: none;
+        }
+
+        .story-inner {
+            width: 100%;
+            height: 100%;
+            border-radius: 24px;
+            overflow: hidden;
+            background: #000;
+            pointer-events: auto;
+        }
+
+        .story-inner iframe {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Inputs Personalizados */
+        .custom-input {
+            width: 100%;
+            padding: 1rem;
+            border-radius: 12px;
+            border: 1px solid #e2e8f0;
+            background: #f8fafc;
+            transition: all 0.3s;
+        }
+
+        .custom-input:focus {
+            outline: none;
+            border-color: #0E459B;
+            background: #ffffff;
+            box-shadow: 0 0 0 4px rgba(14, 69, 155, 0.1);
+        }
+
+        #mobile-menu {
+            transition: all 0.4s ease;
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+        }
+
+        #mobile-menu.active {
+            max-height: 500px;
+            opacity: 1;
+            padding: 1.5rem;
+        }
+
+        /* Estilo Adicional para Nova Seção do App */
+        .app-mockup {
+            filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.2));
+            transition: transform 0.5s ease;
+        }
+
+        .app-section:hover .app-mockup {
+            transform: translateY(-10px) rotate(-2deg);
+        }
+
+
+        .story-inner {
+            position: relative;
+            cursor: pointer;
+        }
+
+        .video-thumb {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 2;
+            /* Fica na frente do vídeo */
+            transition: opacity 0.3s;
+        }
+
+        /* Quando clicar, a thumb some e revela o vídeo */
+        .story-inner.playing .video-thumb {
+            opacity: 0;
+            pointer-events: none;
+        }
+    </style>
+</head>
+
+<body class="bg-brand-light">
+
+    <header class="fixed top-0 w-full z-50 bg-white/90 backdrop-blur-md shadow-sm border-b border-gray-100">
+        <nav class="container mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <div class="text-xl md:text-2xl font-extrabold tracking-tighter">
+                    NEW WORLD <span class="text-brand-blue">CURSOS</span><span class="text-brand-red">.</span>
+                </div>
+
+                <div class="hidden lg:flex items-center space-x-8 text-sm font-semibold text-gray-700">
+                    <a href="#cursos" class="hover:text-brand-blue transition">Todos os Cursos</a>
+                    <a href="https://ead.newworldcursos.com.br" target="_blank"
+                        class="flex items-center gap-2 bg-blue-50 text-brand-blue px-4 py-2 rounded-full">
+                        <i class="fas fa-laptop-code"></i> Portal EAD
+                    </a>
+                    <a href="#trabalhe-conosco" class="hover:text-brand-blue transition">Envie seu Currículo</a>
+                    <a href="#contato" class="bg-brand-red text-white px-6 py-3 rounded-full btn-glow-red">Quero me
+                        matricular</a>
+                </div>
+
+                <button id="menu-btn" class="lg:hidden text-brand-blue text-2xl"><i class="fas fa-bars"></i></button>
+            </div>
+            <div id="mobile-menu" class="lg:hidden flex flex-col space-y-4">
+                <a href="#cursos" class="font-bold text-gray-700">Ver Cursos</a>
+                <a href="https://ead.newworldcursos.com.br" class="font-bold text-brand-blue">Acesso EAD</a>
+                <a href="#trabalhe-conosco" class="font-bold text-gray-700">Envie seu Currículo</a>
+                <a href="#contato" class="font-bold text-brand-red">Matricule-se Agora</a>
+            </div>
+        </nav>
+    </header>
+
+    <section class="pt-32 pb-20 px-6 bg-brand-bg">
+        <div class="container mx-auto grid md:grid-cols-2 gap-12 items-center">
+            <div data-aos="fade-right">
+                <h1 class="text-5xl md:text-7xl font-extrabold text-brand-text leading-tight mb-6 tracking-tighter">
+                    Prepare-se para o <span class="text-brand-blue">Mercado Digital.</span>
+                </h1>
+                <p class="text-gray-500 text-lg mb-8 max-w-lg">Cursos práticos de tecnologia, gestão e idiomas com foco
+                    real em empregabilidade em Águas Lindas.</p>
+                <div class="flex flex-wrap gap-4">
+                    <a href="cursos.html"
+                        class="bg-brand-blue text-white px-8 py-4 rounded-xl font-bold btn-glow-blue">Conhecer
+                        Cursos</a>
+                    <a href="https://wa.me/556136136666"
+                        class="bg-white text-brand-blue border border-gray-200 px-8 py-4 rounded-xl font-bold flex items-center gap-2">
+                        <i class="fab fa-whatsapp"></i> Falar com Consultor
+                    </a>
+                </div>
+            </div>
+            <div class="hidden md:block" data-aos="zoom-in">
+                <img src="https://newworld-teste.netlify.app/assets/images/Logo%20Marca%20(1).png"
+                    class="w-2/3 mx-auto opacity-20 grayscale" alt="">
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 bg-white overflow-hidden">
+        <div class="container mx-auto px-6">
+            <h3 class="text-center text-3xl font-black mb-12 tracking-tighter">Sucesso de quem já <span
+                    class="text-brand-blue">chegou lá</span></h3>
+            <div class="story-container" id="draggable-stories">
+
+                <div class="story-video-card">
+                    <div class="story-inner" onclick="this.classList.add('playing')">
+                        <img src="https://lh3.googleusercontent.com/rd-d/ALs6j_GnqJe1-T6h5Jm4jE3vjTP-rCqrlHqfiPsMBU2OjlHrROG0XBYDIYdWoYba0uG5cVvwE_-g_uA5yTnl9ComzIH9PUqUB7rGh60G3kc_RItNY46M80tQExAzCiDTZbYqNCGTeOYVwcwM33E6E1faCPdcqpTD8LjYf6KsVSb-4l5_BzbS0WUxHgMq8Kv6pUhZfMcgHP16KHa2gbJy56QYr0zoLypDlo9GpjwRu2L7R22f4OAYW-m-JUYs6BbIHvtqa4jbYGwJgZ6WVplkevzEen1F1PvHTDCrpNS4WzCLSTQ8-J1rn_HiASt_G08JYfwX6eoHGDvpzVP0HtZsUQw7vriYX-P0GFYgI1Ib-mevPfjmOscq9sy4TQ7Dej6tKnu9pOGqg3lvL81KjGGWalkG8VRKGmc-DzsmKs7pJFJ476ypRht5M1E-diBdBv3q92pfqA56GQ1787KIH2NoOf9aeq9oPBXgc2gCrheoQ-y-dWg0NKUPWMaj4DBdPs839ihN0FT0PIIvPFuqBus--QLSjKTbpitQmFiw9JL5vTTuoF52H6XK6j7wtoX_gIU4VU4a9I2UvCg-esTKMYHFbEyB942rs8DoqZMo5wVu1HVdYuFV2TVQ-NJdSFdQs1Qx4sil-Vfz8fk1cS_BpFtSDdR1QuNKYM7xvXMC21WEVm9qaBOWi70cnsgKPuuRdGDlAWITBdhUcxD3EJNANuOB8lfsHaU3_EMD-ajWZH3vwkLmUi3y4TE4AxylgD_ygbMiQPV6XjIrvTLWbipEbBbJSjW8KhNfAr_iJgtk9rU-tlC_Q9nLQGF898_x1wRNs__lNooyHQ4qaaSxOaDJJCDPAosFAuWRjMJLMjYkmaVR4xitlYEASJ7_HgagK9SpXACKZ9GUIvF6WnRjcmAtIyHzU7XXm_YYhl__ZG_0SOKFe21u_3z9nCzlfqMFMiElNvRF0bNrFXzjOtG1sHw1N_D5D5baWLL8ZPVuQF_pyA-MmtzlcWY7XP4err8zF72AgGxSKJezECcXgbXy_E7rmW2PN7O3In_iNAz8bHGtgBuZYZ9rlbTgAiVdJ5lZXRxGQI83mnpvqYIiqAB6tgCbOotlmlO7oIYby30F_Rt9a4UTzFphLexCHwVd0BAKMTjXxjitopxh9v7o49VGQZiwHguUVbr7jF40I6JpIusC2_OE7c1t3raiJPDzr0UF0c5uNCv6=w984-h901?auditContext=forDisplay" class="video-thumb" alt="Thumbnail">
+
+                        <iframe src="https://drive.google.com/file/d/1ZOPjA9117tsBy8C1T3r4Nx0MbHJ1NcCc/preview" frameborder="0"></iframe>
+                    </div>
+                </div>
+
+                 <div class="story-video-card">
+                    <div class="story-inner" onclick="this.classList.add('playing')">
+                        <img src="https://lh3.googleusercontent.com/rd-d/ALs6j_Gznp37SsTNVJvpGDz7uRScIgwp7Ar90rBBiF2LJWji3ZIFFh-0KNvdOhKerXK0I6-rwycgzPcFGfB2g5qanQzYHSWV1AfP3CWsxuz6-a-xMOBcpWPhWgo_z9ogbgUGn81o0LEhWZC4trdqpWAL3hA1yopeNuaHy2ubK7iCm8OgUTAEUG-Rha2GPeuH20phdFM2ddcU_43_5cvF7WPJ2pcN5Se9ApoCQizQrv7HRnO33S5MKEE5o8l9j5YzGcAvgjPFdcLYZdUZpKgtXXRtzkV5vuKlTO7dM0Ly6iYc8evQ53dDrx_WRRUzY2gNSAn74T_n66RwraEE_CAsLFnmaQpeIpR78yD3bgUyhWA2iTZ4kmmgmskSXtYrZ9wePl1bpVVXJMyMK8uuRx69X430wuovM4DRnxHvr4m0g0K7iNkKlsv7pusW78XqiUppV9nDf3KtK3hvy0trfc7ZDT0QD4G04gAMxZvIAHvWbEDFFApR9pQEgDXzPmOLXLUn7MYFuDJJeWwpUiu-0LwbyEpGUnUVcT9MZqA_j7ILZNc8UDkcacc_D567pgvh43QcgwT_ipaN6J_59HAe5BOpDmo3DTuGq5R7WB-VpDdhabcawlwGFkg2B0pHxmAibpkqCi7B9q3enKRX2s-9g_utr6q29xCqYaraFpBYt8JjnabM90Sxf9jOdyb_e4ZyDz0OfIgsmFoNFupKLq23g0A8V7GivKwdjjm2v7bF6_4rdeyM3NftUJRbT-mqsS8U1XGuySpXQCnzFsSEmIMkxXVyQXHZWJWrqmZlhmlHFm3TdmdBllQU9nwOEFGui_c6jAo2qiD3phU3KUYLB1yhAHJwSe4Y9ceVcuSoP6FCHuMmNijEnZI8dhPhQurgXuDmQb78b1jIeUCPQcreznDWsQXp_e1CEjNP91GYq4zflUC4xGKGM0IrNM8vpGIvUmuCQcAvH87vufBjvk4q8LqCYsQO8pKRevhSowaBkfb9rNU39aJgIGEhFPdjFRsBaLjsUHwQRApeSfv0qSa2bOLG_v0evfCAbLKG3m9oKRXl4lqGR0uV6Cg7AuVnqJUXpYTE51f_fu3qO4H_RzrVWd2SNSKuhqc3TSJaGHihRYrFDalM3tk-20kfARxFsgmg43gTZoPq_er92YmgP8itF20EfS9Akuu2x2MyWLIM-c8z1htAofjtqmxiLUbeDOiJ9u0M6pkN=w984-h901?auditContext=forDisplay" class="video-thumb" alt="Thumbnail">
+
+                        <iframe src="https://drive.google.com/file/d/1SfckomcSZpPMixQ6ZYdBfys52oyt5w4U/preview" frameborder="0"></iframe>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="cursos" class="py-24 bg-brand-bg px-6">
+        <div class="container mx-auto">
+            <div class="flex justify-between items-end mb-16">
+                <h2 class="text-4xl font-black tracking-tighter">Nossos <span class="text-brand-blue">Cursos</span></h2>
+            </div>
+            <div id="grid-cursos" class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 bg-white px-6 overflow-hidden app-section">
+        <div class="container mx-auto">
+            <div
+                class="bg-brand-blue rounded-[40px] p-8 md:p-20 relative flex flex-col md:flex-row items-center gap-12 shadow-2xl overflow-hidden">
+                <div class="absolute top-0 right-0 w-96 h-96 bg-white/5 blur-[100px] rounded-full -mr-20 -mt-20"></div>
+
+                <div class="md:w-3/5 text-white z-10" data-aos="fade-up">
+                    <span
+                        class="bg-blue-400/20 text-blue-200 px-4 py-2 rounded-full text-xs font-bold uppercase tracking-widest">Experiência
+                        Mobile</span>
+                    <h2 class="text-4xl md:text-6xl font-black mt-6 mb-8 tracking-tighter leading-tight">
+                        Sua vida acadêmica na palma da mão com nosso <span class="text-blue-300">App oficial.</span>
+                    </h2>
+                    <p class="text-blue-100 text-lg mb-10 max-w-xl leading-relaxed">
+                        Acesse conteúdos extras, acompanhe suas notas e frequência, gerencie parcelas e pagamentos e
+                        assista às suas videoaulas onde e quando quiser com o App New World.
+                    </p>
+                    <div class="flex flex-wrap gap-5">
+                        <a href="/front/app.html"
+                            class="bg-white text-brand-blue px-10 py-5 rounded-2xl font-bold flex items-center gap-3 hover:bg-gray-100 transition-all btn-glow-blue text-lg">
+                            <i class="fas fa-rocket"></i> Explorar o Aplicativo
+                        </a>
+                        <div class="flex items-center gap-4 text-2xl opacity-50">
+                            <i class="fab fa-apple"></i>
+                            <i class="fab fa-google-play text-xl"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="md:w-2/5 relative" data-aos="fade-left">
+                    <div class="relative z-10">
+                        <img src="https://newworld-teste.netlify.app/assets/images/Logo%20Marca%20(1).png"
+                            class="app-mockup w-48 md:w-64 mx-auto brightness-200 opacity-60" alt="App Mockup">
+                    </div>
+                    <div
+                        class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-72 h-72 bg-blue-500 rounded-full blur-3xl opacity-20">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contato" class="py-24 bg-brand-bg px-6">
+        <div class="container mx-auto max-w-5xl">
+            <div class="bg-brand-blue rounded-[40px] overflow-hidden shadow-2xl flex flex-col md:flex-row">
+                <div class="md:w-1/2 p-12 text-white flex flex-col justify-center">
+                    <h2 class="text-4xl font-black mb-6 tracking-tighter">Inicie sua jornada hoje.</h2>
+                    <p class="text-blue-100 mb-8 leading-relaxed">Preencha os dados e um consultor de carreira entrará
+                        em contato para validar sua bolsa de estudos.</p>
+                    <div class="space-y-4">
+                        <div class="flex items-center gap-4"><i class="fas fa-check-circle"></i><span>Certificação
+                                Reconhecida</span></div>
+                        <div class="flex items-center gap-4"><i class="fas fa-check-circle"></i><span>Aulas 100%
+                                Práticas</span></div>
+                    </div>
+                </div>
+                <div class="md:w-1/2 bg-white p-12 space-y-4">
+                    <input type="text" id="nome-compl" placeholder="Seu Nome Completo" class="custom-input" required>
+                    <input type="tel" id="numero" placeholder="Seu WhatsApp (com DDD)" class="custom-input" required>
+                    <select id="select-curso" class="custom-input" required>
+                        <option value="">Selecione o Curso de Interesse</option>
+                        <option value="Farmacia">Atendente de Farmácia</option>
+                        <option value="Cuidador">Cuidador de Idosos</option>
+                        <option value="DesignMidia">Design Gráfico + Mídia Digital</option>
+                        <option value="Informatica">Informática</option>
+                        <option value="Fibra">Instalação e Manutenção de Fibra Óptica</option>
+                        <option value="Ingles">Inglês</option>
+                        <option value="ManutencaoCelular">Manutenção de Celular e Smartphone</option>
+                        <option value="MontagemPC">Montagem e Configuração de PCs</option>
+                        <option value="Administracao">Administração</option>
+                        <option value="Violao">Violão</option>
+                    </select>
+                    <button type="submit" id="enviar-inscricao"
+                        class="w-full bg-brand-red text-white py-4 rounded-xl font-bold btn-glow-red uppercase tracking-widest transition-all">
+                        Enviar Inscrição
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="trabalhe-conosco" class="py-24 bg-white px-6">
+        <div class="container mx-auto max-w-3xl text-center">
+            <i class="fas fa-briefcase text-4xl text-brand-blue mb-6"></i>
+            <h2 class="text-3xl font-black mb-4 tracking-tighter">Faça parte do nosso time</h2>
+            <p class="text-gray-500 mb-10">Estamos sempre em busca de instrutores e talentos administrativos. Envie seu
+                currículo abaixo.</p>
+
+            <form id="form-cv" class="bg-white p-8 rounded-3xl shadow-lg border border-gray-100 text-left">
+                <div class="grid md:grid-cols-2 gap-4 mb-4">
+                    <input id="nome" type="text" placeholder="Nome" class="custom-input" required>
+                    <input id="email" type="email" placeholder="E-mail" class="custom-input" required>
+                </div>
+                <div class="mb-4">
+                    <label class="block text-xs font-bold text-gray-400 uppercase mb-2 ml-2">Anexe seu Currículo
+                        (PDF)</label>
+                    <input type="file" id="curriculoFile"
+                        class="custom-input file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-xs file:font-bold file:bg-brand-blue file:text-white"
+                        accept=".pdf" required>
+                </div>
+                <button id="send-curriculo"
+                    class="w-full bg-brand-text text-white py-4 rounded-xl font-bold hover:bg-black transition-all">Enviar
+                    para o RH</button>
+            </form>
+        </div>
+    </section>
+
+    <footer class="bg-white border-t border-gray-100 pt-20 pb-8 px-6">
+        <div class="container mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+
+                <div class="space-y-6">
+                    <div class="text-2xl font-black tracking-tighter">
+                        NEW WORLD <span class="text-brand-blue">CURSOS</span><span class="text-brand-red">.</span>
+                    </div>
+                    <p class="text-gray-500 text-sm leading-relaxed max-w-xs">
+                        Transformando o futuro através da tecnologia e educação profissional. A maior estrutura de
+                        ensino de Águas Lindas de Goiás.
+                    </p>
+                    <div class="flex gap-4">
+                        <a href="https://www.instagram.com/newworldcursosoficial/" target="_blank"
+                            class="w-10 h-10 rounded-full bg-brand-bg flex items-center justify-center text-brand-blue hover:bg-brand-blue hover:text-white transition-all"><i
+                                class="fab fa-instagram"></i></a>
+                        <a href="https://www.facebook.com/NewworldCursos" target="_blank"
+                            class="w-10 h-10 rounded-full bg-brand-bg flex items-center justify-center text-brand-blue hover:bg-brand-blue hover:text-white transition-all"><i
+                                class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.youtube.com/@newworldcursos5841"
+                            class="w-10 h-10 rounded-full bg-brand-bg flex items-center justify-center text-brand-blue hover:bg-brand-blue hover:text-white transition-all"><i
+                                class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="text-brand-text font-bold uppercase text-xs tracking-widest mb-6">Institucional</h4>
+                    <ul class="space-y-4 text-sm text-gray-500 font-medium">
+                        <li><a href="#cursos" class="hover:text-brand-blue transition">Nossos Cursos</a></li>
+                        <li><a href="https://ead.newworldcursos.com.br" class="hover:text-brand-blue transition">Portal
+                                do Aluno (EAD)</a></li>
+                        <li><a href="#trabalhe-conosco" class="hover:text-brand-blue transition">Envie seu Currículo</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-brand-text font-bold uppercase text-xs tracking-widest mb-6">Atendimento</h4>
+                    <ul class="space-y-4 text-sm text-gray-500">
+                        <li class="flex items-start gap-3">
+                            <i class="fas fa-map-marker-alt text-brand-blue mt-1"></i>
+                            <span>
+                                Quadra 12 Lote 21 - Jardim Brasilia, Águas Lindas de Goiás, GO, Brazil<br><span
+                                    class="text-[10px] text-gray-400 font-bold uppercase">Entorno do DF</span></span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="fas fa-phone-alt text-brand-blue"></i>
+                            <span>(61) 3613-6666</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="fas fa-envelope text-brand-blue"></i>
+                            <span>ead.newworldcursos@gmail.com</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-brand-text font-bold uppercase text-xs tracking-widest mb-6">Segurança e Pagamento
+                    </h4>
+                    <div class="flex flex-wrap gap-3 mb-6">
+                        <div class="bg-gray-50 px-3 py-2 rounded-lg border border-gray-100 flex items-center gap-2">
+                            <i class="fab fa-pix text-green-500"></i>
+                            <span class="text-[10px] font-bold text-gray-400">PIX ACEITO</span>
+                        </div>
+                        <div class="bg-gray-50 px-3 py-2 rounded-lg border border-gray-100 flex items-center gap-2">
+                            <i class="fas fa-shield-alt text-brand-blue"></i>
+                            <span class="text-[10px] font-bold text-gray-400">SITE SEGURO</span>
+                        </div>
+                    </div>
+                    <div class="p-4 bg-brand-bg rounded-2xl border border-dashed border-gray-200">
+                        <p class="text-[10px] text-gray-400 font-medium leading-tight">
+                            Matrículas abertas para turmas de 2026. Consulte condições para bolsas de estudo de até 50%.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+
+            <div
+                class="pt-8 border-t border-gray-50 flex flex-col md:flex-row justify-between items-center gap-4 text-center md:text-left">
+                <p class="text-gray-400 text-[10px] uppercase font-bold tracking-widest">
+                    &copy; 2026 New World Cursos - Todos os direitos reservados.
+                </p>
+                <p class="text-gray-400 text-[10px] uppercase font-bold tracking-widest">
+                    Desenvolvido por <span class="text-brand-blue">Gilberto Costa</span>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/js/index.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ once: true });
+
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        menuBtn.addEventListener('click', () => mobileMenu.classList.toggle('active'));
+
+        const cursos = [
+            { id: "Farmacia", titulo: "Atendente de Farmácia", desc: "Atendimento ao cliente, organização e rotinas de farmácia.", cor: "blue", icon: "fa-pills" },
+            { id: "Cuidador", titulo: "Cuidador de Idosos", desc: "Cuidados básicos, bem-estar e acompanhamento diário.", cor: "red", icon: "fa-user-nurse" },
+            { id: "DesignMidia", titulo: "Design Gráfico + Mídia Digital", desc: "Criação visual e gestão de conteúdos para redes sociais.", cor: "blue", icon: "fa-palette" },
+            { id: "Informatica", titulo: "Informática", desc: "Do básico ao avançado em sistemas e ferramentas digitais.", cor: "blue", icon: "fa-desktop" },
+            { id: "Fibra", titulo: "Instalação e Manutenção de Fibra Óptica", desc: "Aprenda instalação, configuração e manutenção de redes.", cor: "red", icon: "fa-network-wired" },
+            { id: "Ingles", titulo: "Inglês", desc: "Desenvolva fluência para o dia a dia e mercado de trabalho.", cor: "blue", icon: "fa-language" },
+            { id: "ManutencaoCelular", titulo: "Manutenção de Celular e Smartphone", desc: "Conserto, diagnóstico e manutenção de dispositivos móveis.", cor: "blue", icon: "fa-gear" },
+            { id: "MontagemPC", titulo: "Montagem e Configuração de PCs", desc: "Monte, configure e faça manutenção em computadores.", cor: "red", icon: "fa-desktop" },
+            { id: "Administracao", titulo: "Administração", desc: "Gestão, organização e processos administrativos.", cor: "blue", icon: "fa-briefcase" },
+            { id: "Violao", titulo: "Violão", desc: "Aprenda do básico ao avançado na prática musical.", cor: "red", icon: "fa-guitar" }
+        ];
+
+        const grid = document.getElementById('grid-cursos');
+        grid.innerHTML = cursos.map(c => `
+            <div class="card-course p-8 rounded-[32px] ${c.cor === 'blue' ? 'card-blue' : 'card-red'}" data-tilt>
+                <div class="w-14 h-14 rounded-2xl flex items-center justify-center ${c.cor === 'blue' ? 'bg-blue-50 text-brand-blue' : 'bg-red-50 text-brand-red'} mb-6">
+                    <i class="fas ${c.icon} text-2xl"></i>
+                </div>
+                <h4 class="text-2xl font-bold mb-4">${c.titulo}</h4>
+                <p class="text-gray-500 text-sm mb-8">${c.desc}</p>
+                <button onclick="document.getElementById('select-curso').value='${c.id}'; window.location.href='#contato';" 
+                        class="text-xs font-bold uppercase tracking-widest flex items-center group">
+                    Tenho Interesse <i class="fas fa-arrow-right ml-2 group-hover:translate-x-2 transition-all"></i>
+                </button>
+            </div>
+        `).join('');
+
+        VanillaTilt.init(document.querySelectorAll("[data-tilt]"), { max: 10, speed: 400 });
+
+        // Lógica de Arrastar os Stories (Mouse e Touch)
+        const slider = document.getElementById('draggable-stories');
+        let isDown = false;
+        let startX;
+        let scrollLeft;
+
+        slider.addEventListener('mousedown', (e) => {
+            isDown = true;
+            startX = e.pageX - slider.offsetLeft;
+            scrollLeft = slider.scrollLeft;
+        });
+        slider.addEventListener('mouseleave', () => {
+            isDown = false;
+        });
+        slider.addEventListener('mouseup', () => {
+            isDown = false;
+        });
+        slider.addEventListener('mousemove', (e) => {
+            if (!isDown) return;
+            e.preventDefault();
+            const x = e.pageX - slider.offsetLeft;
+            const walk = (x - startX) * 2;
+            slider.scrollLeft = scrollLeft - walk;
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="pt-br" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>App New World | Seu Portal do Aluno</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="shortcut icon" href="https://newworld-teste.netlify.app/assets/images/Logo%20Marca%20(1).png" type="image/x-icon">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            light: '#ffffff',
+                            bg: '#fbfcfd',
+                            text: '#1a1c3d',
+                            blue: '#0E459B',
+                            red: '#ff003c',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap');
+
+        body {
+            background-color: #fbfcfd;
+            font-family: 'Poppins', sans-serif;
+            color: #1a1c3d;
+        }
+
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 */
+            height: 0;
+            overflow: hidden;
+            border-radius: 24px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .btn-download {
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .btn-download:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 30px -5px rgba(14, 69, 155, 0.3);
+        }
+    </style>
+</head>
+
+<body class="antialiased">
+
+    <header class="py-6 px-6">
+        <div class="container mx-auto flex justify-between items-center">
+            <a href="index.html" class="text-xl font-extrabold tracking-tighter">
+                NEW WORLD <span class="text-brand-blue">CURSOS</span><span class="text-brand-red">.</span>
+            </a>
+            <a href="index.html" class="text-sm font-bold text-brand-blue hover:underline">
+                <i class="fas fa-arrow-left mr-2"></i> Voltar ao site
+            </a>
+        </div>
+    </header>
+
+    <section class="pt-12 pb-20 px-6">
+        <div class="container mx-auto max-w-6xl">
+            <div class="flex flex-col lg:flex-row items-center gap-16">
+                
+                <div class="lg:w-1/2" data-aos="fade-right">
+                    <span class="bg-blue-100 text-brand-blue px-4 py-2 rounded-full text-xs font-bold uppercase tracking-widest">Disponível agora</span>
+                    <h1 class="text-4xl md:text-6xl font-black text-brand-text mt-6 mb-8 tracking-tighter leading-tight">
+                        Toda a sua escola em <span class="text-brand-blue">um só lugar.</span>
+                    </h1>
+                    <p class="text-gray-500 text-lg mb-10 leading-relaxed">
+                        Baixe o aplicativo oficial da New World Cursos e tenha acesso instantâneo às suas notas, frequências, boletos e videoaulas exclusivas.
+                    </p>
+
+                    <div class="flex flex-wrap gap-4">
+                        <a href="https://apps.apple.com/br/app/new-world-cursos/id6744908262" class="btn-download bg-black text-white px-8 py-4 rounded-2xl flex items-center gap-4 w-full sm:w-auto">
+                            <i class="fab fa-apple text-3xl"></i>
+                            <div class="text-left">
+                                <p class="text-[10px] uppercase opacity-70 leading-none">Baixar na</p>
+                                <p class="text-xl font-bold leading-none">App Store</p>
+                            </div>
+                        </a>
+                        <a href="https://play.google.com/store/apps/details?id=br.com.f10.aluno.newworld" class="btn-download bg-brand-blue text-white px-8 py-4 rounded-2xl flex items-center gap-4 w-full sm:w-auto">
+                            <i class="fab fa-google-play text-2xl"></i>
+                            <div class="text-left">
+                                <p class="text-[10px] uppercase opacity-70 leading-none">Disponível no</p>
+                                <p class="text-xl font-bold leading-none">Google Play</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="lg:w-1/2 flex justify-center" data-aos="zoom-in">
+                    <div class="relative">
+                        <div class="absolute inset-0 bg-brand-blue/10 rounded-full blur-3xl transform scale-110"></div>
+                        <img src="https://newworld-teste.netlify.app/assets/images/Logo%20Marca%20(1).png" 
+                             alt="Mockup App" 
+                             class="relative w-64 md:w-80 drop-shadow-2xl">
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 bg-white px-6 border-t border-gray-100">
+        <div class="container mx-auto max-w-4xl text-center">
+            <h2 class="text-3xl md:text-4xl font-black mb-4 tracking-tighter">Veja como é <span class="text-brand-red">fácil usar</span></h2>
+            <p class="text-gray-500 mb-12">Assista ao tutorial completo e aprenda a navegar pelas suas notas, pagamentos e conteúdos extras.</p>
+            
+            <div class="video-container" data-aos="fade-up">
+               <iframe width="1052" height="592" src="https://www.youtube.com/embed/xVu4u4bW0xk" title="AVA F10 - AppSmartAluno" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+        </div>
+    </section>
+
+     <footer class="bg-white border-t border-gray-100 pt-20 pb-8 px-6">
+        <div class="container mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+
+                <div class="space-y-6">
+                    <div class="text-2xl font-black tracking-tighter">
+                        NEW WORLD <span class="text-brand-blue">CURSOS</span><span class="text-brand-red">.</span>
+                    </div>
+                    <p class="text-gray-500 text-sm leading-relaxed max-w-xs">
+                        Transformando o futuro através da tecnologia e educação profissional. A maior estrutura de
+                        ensino de Águas Lindas de Goiás.
+                    </p>
+                    <div class="flex gap-4">
+                        <a href="https://www.instagram.com/newworldcursosoficial/" target="_blank"
+                            class="w-10 h-10 rounded-full bg-brand-bg flex items-center justify-center text-brand-blue hover:bg-brand-blue hover:text-white transition-all"><i
+                                class="fab fa-instagram"></i></a>
+                        <a href="https://www.facebook.com/NewworldCursos" target="_blank"
+                            class="w-10 h-10 rounded-full bg-brand-bg flex items-center justify-center text-brand-blue hover:bg-brand-blue hover:text-white transition-all"><i
+                                class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.youtube.com/@newworldcursos5841"
+                            class="w-10 h-10 rounded-full bg-brand-bg flex items-center justify-center text-brand-blue hover:bg-brand-blue hover:text-white transition-all"><i
+                                class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="text-brand-text font-bold uppercase text-xs tracking-widest mb-6">Institucional</h4>
+                    <ul class="space-y-4 text-sm text-gray-500 font-medium">
+                        <li><a href="#cursos" class="hover:text-brand-blue transition">Nossos Cursos</a></li>
+                        <li><a href="https://ead.newworldcursos.com.br" class="hover:text-brand-blue transition">Portal
+                                do Aluno (EAD)</a></li>
+                        <li><a href="#trabalhe-conosco" class="hover:text-brand-blue transition">Envie seu Currículo</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-brand-text font-bold uppercase text-xs tracking-widest mb-6">Atendimento</h4>
+                    <ul class="space-y-4 text-sm text-gray-500">
+                        <li class="flex items-start gap-3">
+                            <i class="fas fa-map-marker-alt text-brand-blue mt-1"></i>
+                            <span>
+                                Quadra 12 Lote 21 - Jardim Brasilia, Águas Lindas de Goiás, GO, Brazil<br><span
+                                    class="text-[10px] text-gray-400 font-bold uppercase">Entorno do DF</span></span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="fas fa-phone-alt text-brand-blue"></i>
+                            <span>(61) 3613-6666</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="fas fa-envelope text-brand-blue"></i>
+                            <span>ead.newworldcursos@gmail.com</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-brand-text font-bold uppercase text-xs tracking-widest mb-6">Segurança e Pagamento</h4>
+                    <div class="flex flex-wrap gap-3 mb-6">
+                        <div class="bg-gray-50 px-3 py-2 rounded-lg border border-gray-100 flex items-center gap-2">
+                            <i class="fab fa-pix text-green-500"></i>
+                            <span class="text-[10px] font-bold text-gray-400">PIX ACEITO</span>
+                        </div>
+                        <div class="bg-gray-50 px-3 py-2 rounded-lg border border-gray-100 flex items-center gap-2">
+                            <i class="fas fa-shield-alt text-brand-blue"></i>
+                            <span class="text-[10px] font-bold text-gray-400">SITE SEGURO</span>
+                        </div>
+                    </div>
+                    <div class="p-4 bg-brand-bg rounded-2xl border border-dashed border-gray-200">
+                        <p class="text-[10px] text-gray-400 font-medium leading-tight">
+                            Matrículas abertas para turmas de 2026. Consulte condições para bolsas de estudo de até 50%.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+
+            <div
+                class="pt-8 border-t border-gray-50 flex flex-col md:flex-row justify-between items-center gap-4 text-center md:text-left">
+                <p class="text-gray-400 text-[10px] uppercase font-bold tracking-widest">
+                    &copy; 2026 New World Cursos - Todos os direitos reservados.
+                </p>
+                <p class="text-gray-400 text-[10px] uppercase font-bold tracking-widest">
+                    Desenvolvido por <span class="text-brand-blue">Gilberto Costa</span>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 1000, once: true });
+    </script>
+</body>
+</html>
